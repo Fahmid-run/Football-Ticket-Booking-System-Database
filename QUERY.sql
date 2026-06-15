@@ -1,11 +1,15 @@
+
+
+
+
 -- =========================================================================
 -- SYSTEM: Football Ticket Booking System Database Setup Template
 -- DESCRIPTION: Pseudo-DDL Template for Table Creation & Data Insertion=========================================================================
 
 -- DROP TABLES IF THEY ALREADY EXIST TO PREVENT CONFLICTS
-DROP TABLE IF EXISTS Bookings;
 DROP TABLE IF EXISTS Matches;
 DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS bookings;
 
 -- =========================================================================
 -- 1. CREATE USERS TABLE
@@ -14,7 +18,7 @@ CREATE TABLE Users (
     user_id SERIAL PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    role VARCHAR(50) NOT NULL,
+    role VARCHAR(50) NOT NULL CHECK (role IN ('Ticket Manager', 'Football Fan')),
     phone_number VARCHAR(20)
 );
 
@@ -26,7 +30,10 @@ CREATE TABLE Matches (
     fixture VARCHAR(150) NOT NULL,
     tournament_category VARCHAR(100) NOT NULL,
     base_ticket_price DECIMAL NOT NULL,
-    match_status VARCHAR(50) NOT NULL
+    match_status VARCHAR(50) NOT NULL CHECK (
+            match_status IN
+            ('Available', 'Selling Fast', 'Sold Out', 'Postponed')
+        )
     
    
     
@@ -40,7 +47,11 @@ CREATE TABLE bookings (
     user_id INT NOT NULL,
     match_id INT NOT NULL,
     seat_number VARCHAR(20) UNIQUE,
-    payment_status VARCHAR(50),
+    payment_status VARCHAR(50)  CHECK (
+            payment_status IN
+            ('Pending', 'Confirmed', 'Cancelled', 'Refunded')
+            OR payment_status IS NULL
+        ),
     total_cost DECIMAL NOT NULL,
 
     CONSTRAINT fk_booking_user
