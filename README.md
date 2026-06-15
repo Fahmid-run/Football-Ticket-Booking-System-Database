@@ -23,8 +23,8 @@ The database allows users to:
 ---
 
 #  Final Submission:
-✅ ERD Link (Public):   
-✅ GitHub Repository Link (Public): 
+✅ ERD Link (Public):  https://drawsql.app/teams/john-nz/diagrams/assignment 
+✅ GitHub Repository Link (Public): https://github.com/Fahmid-run/Football-Ticket-Booking-System-Database
 
 # Database Design
 

@@ -20,7 +20,7 @@ CREATE TABLE Users (
     email VARCHAR(100) UNIQUE NOT NULL,
     role VARCHAR(50) NOT NULL CHECK (role IN ('Ticket Manager', 'Football Fan')),
     phone_number VARCHAR(20)
-);
+);\ 
 
 -- =========================================================================
 -- 2. CREATE MATCHES TABLE
@@ -43,7 +43,7 @@ CREATE TABLE Matches (
 -- 3. CREATE BOOKINGS TABLE
 -- =========================================================================
 CREATE TABLE bookings (
-    booking_id INT PRIMARY KEY,
+    booking_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     match_id INT NOT NULL,
     seat_number VARCHAR(20) UNIQUE,
