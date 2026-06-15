@@ -24,8 +24,8 @@ CREATE TABLE Users (
 CREATE TABLE Matches (
     match_id SERIAL PRIMARY KEY,
     fixture VARCHAR(150) NOT NULL,
-     tournament_category VARCHAR(100) NOT NULL,
-    base_ticket_price NUMERIC(10,2) NOT NULL,
+    tournament_category VARCHAR(100) NOT NULL,
+    base_ticket_price DECIMAL NOT NULL,
     match_status VARCHAR(50) NOT NULL
     
    
@@ -39,9 +39,9 @@ CREATE TABLE bookings (
     booking_id INT PRIMARY KEY,
     user_id INT NOT NULL,
     match_id INT NOT NULL,
-    seat_number VARCHAR(20),
+    seat_number VARCHAR(20) UNIQUE,
     payment_status VARCHAR(50),
-    total_cost NUMERIC(10,2) NOT NULL,
+    total_cost DECIMAL NOT NULL,
 
     CONSTRAINT fk_booking_user
         FOREIGN KEY (user_id)
