@@ -20,7 +20,7 @@ CREATE TABLE Users (
     email VARCHAR(100) UNIQUE NOT NULL,
     role VARCHAR(50) NOT NULL CHECK (role IN ('Ticket Manager', 'Football Fan')),
     phone_number VARCHAR(20)
-);\ 
+); 
 
 -- =========================================================================
 -- 2. CREATE MATCHES TABLE

@@ -94,7 +94,7 @@ Matches (1) → (Many) Bookings
 
 * PostgreSQL
 * SQL
-* Draw.io (ERD Design)
+* DrawSql (ERD Design)
 * beekeeper
 
 ---
